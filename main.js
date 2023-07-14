@@ -27,21 +27,23 @@ function handleScroll() {
   // Get the corresponding image path based on the threshold index
   const imagePath = imageSequence[currentIndex];
 
-  // Update the image source based on the current threshold index
+  // Apply CSS transition for smooth image change
+  laptopImage.style.transition = 'opacity 0.3s ease-in-out';
+
+  // Update the image source and fade in the new image
+  laptopImage.style.opacity = 0;
+  laptopImage.onload = () => {
+    laptopImage.style.opacity = 1;
+  };
   laptopImage.src = imagePath;
 }
 
-let animationFrameId;
-
-// Function to handle scroll events
-function handleScrollEvent() {
+// Attach the scroll event listener to the totalScrollHeight area only
+window.addEventListener('scroll', () => {
   const scrollPosition = window.scrollY;
 
   if (scrollPosition <= totalScrollHeight) {
-    cancelAnimationFrame(animationFrameId);
-    animationFrameId = requestAnimationFrame(handleScroll);
+    handleScroll();
   }
-}
+});
 
-// Attach the scroll event listener to the totalScrollHeight area only
-window.addEventListener('scroll', handleScrollEvent);
