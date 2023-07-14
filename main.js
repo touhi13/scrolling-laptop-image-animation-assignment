@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const laptopImage = document.getElementById('image');
   
     // Calculate the total scrollable height based on the height of a single image
-    const totalScrollHeight = laptopImage.offsetHeight / 2;
+    const totalScrollHeight = laptopImage.offsetHeight / 1.4;
   
     // Calculate the scroll position thresholds based on the total scrollable height
     const thresholds = Array.from(Array(83).keys()).map(index => (index + 1) * (totalScrollHeight / 83));
